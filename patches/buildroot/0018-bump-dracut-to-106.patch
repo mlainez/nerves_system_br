@@ -1,3 +1,12 @@
+diff --git a/package/dracut/dracut.hash b/package/dracut/dracut.hash
+index 6ca352c542..da6f1ff52f 100644
+--- a/package/dracut/dracut.hash
++++ b/package/dracut/dracut.hash
+@@ -1,3 +1,3 @@
+ # Locally computed
+-sha256  eabf0bb685420c1e1d5475b6855ef787104508f0135ff570312845256e0fcecf  dracut-059.tar.gz
++sha256  9009ac13072c9b583822ad1a17f2cca47af463190f0d6623e90b0f1107c71f95  dracut-106.tar.gz
+ sha256  8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643  COPYING
 diff --git a/package/dracut/dracut.mk b/package/dracut/dracut.mk
 index cb6044415e..bc81582b9f 100644
 --- a/package/dracut/dracut.mk
