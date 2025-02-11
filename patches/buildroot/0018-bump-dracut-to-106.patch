@@ -8,6 +8,7 @@ index cb6044415e..f3a23158f1 100644
  
 -DRACUT_VERSION = 059
 +DRACUT_VERSION = 106
- DRACUT_SITE = $(call github,dracutdevs,dracut,$(DRACUT_VERSION))
+-DRACUT_SITE = $(call github,dracutdevs,dracut,$(DRACUT_VERSION))
++DRACUT_SITE = $(call github,dracut-ng,dracut-ng,$(DRACUT_VERSION))
  DRACUT_LICENSE = GPL-2.0
  DRACUT_LICENSE_FILES = COPYING
