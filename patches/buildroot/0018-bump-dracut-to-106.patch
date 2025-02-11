@@ -1,0 +1,13 @@
+diff --git a/package/dracut/dracut.mk b/package/dracut/dracut.mk
+index cb6044415e..f3a23158f1 100644
+--- a/package/dracut/dracut.mk
++++ b/package/dracut/dracut.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-DRACUT_VERSION = 059
++DRACUT_VERSION = 106
+ DRACUT_SITE = $(call github,dracutdevs,dracut,$(DRACUT_VERSION))
+ DRACUT_LICENSE = GPL-2.0
+ DRACUT_LICENSE_FILES = COPYING
