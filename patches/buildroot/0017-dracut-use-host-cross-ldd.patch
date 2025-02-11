@@ -1,7 +1,7 @@
-diff --git a/dracut.mk b/dracut.mk
+diff --git a/package/dracut/dracut.mk b/package/dracut/dracut.mk
 index 8573e64055..cb6044415e 100644
---- a/dracut.mk
-+++ b/dracut.mk
+--- a/package/dracut/dracut.mk
++++ b/package/dracut/dracut.mk
 @@ -10,12 +10,14 @@ DRACUT_LICENSE = GPL-2.0
  DRACUT_LICENSE_FILES = COPYING
  DRACUT_CPE_ID_VALID = YES
@@ -20,13 +20,13 @@ index 8573e64055..cb6044415e 100644
  endef
  HOST_DRACUT_POST_INSTALL_HOOKS += HOST_DRACUT_POST_INSTALL_WRAPPER_SCRIPT
 
-diff --git a/dracut_wrapper b/dracut_wrapper.in
+diff --git a/package/dracut/dracut_wrapper b/package/dracut/dracut_wrapper.in
 similarity index 94%
 rename from dracut_wrapper
 rename to dracut_wrapper.in
 index 968d65cbeb..33012853d5 100644
---- a/dracut_wrapper
-+++ b/dracut_wrapper.in
+--- a/package/dracut/dracut_wrapper
++++ b/package/dracut/dracut_wrapper.in
 @@ -34,7 +34,7 @@ topdir="$(dirname "$(realpath "$(dirname "${0}")")")"
  DRACUT_LDD="$(mktemp /tmp/dracut-ldd.XXXXXX)"
  cat >"${DRACUT_LDD}" <<EOL
