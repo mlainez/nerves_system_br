@@ -1,0 +1,38 @@
+diff --git a/dracut.mk b/dracut.mk
+index 8573e64055..cb6044415e 100644
+--- a/dracut.mk
++++ b/dracut.mk
+@@ -10,12 +10,14 @@ DRACUT_LICENSE = GPL-2.0
+ DRACUT_LICENSE_FILES = COPYING
+ DRACUT_CPE_ID_VALID = YES
+
+-HOST_DRACUT_DEPENDENCIES = host-pkgconf host-kmod host-prelink-cross
++HOST_DRACUT_DEPENDENCIES = host-pkgconf host-kmod host-cross-ldd
+
+ define HOST_DRACUT_POST_INSTALL_WRAPPER_SCRIPT
+ 	mv $(HOST_DIR)/bin/dracut $(HOST_DIR)/bin/dracut.real
+-	install -D -m 0755 $(HOST_DRACUT_PKGDIR)/dracut_wrapper \
+-		$(HOST_DIR)/bin/dracut
++	sed -e "s%@@TARGET_CROSS@@%$(TARGET_CROSS)%" \
++		$(HOST_DRACUT_PKGDIR)/dracut_wrapper.in > \
++		$(@D)/dracut_wrapper
++	install -D -m 0755 $(@D)/dracut_wrapper $(HOST_DIR)/bin/dracut
+ endef
+ HOST_DRACUT_POST_INSTALL_HOOKS += HOST_DRACUT_POST_INSTALL_WRAPPER_SCRIPT
+
+diff --git a/dracut_wrapper b/dracut_wrapper.in
+similarity index 94%
+rename from dracut_wrapper
+rename to dracut_wrapper.in
+index 968d65cbeb..33012853d5 100644
+--- a/dracut_wrapper
++++ b/dracut_wrapper.in
+@@ -34,7 +34,7 @@ topdir="$(dirname "$(realpath "$(dirname "${0}")")")"
+ DRACUT_LDD="$(mktemp /tmp/dracut-ldd.XXXXXX)"
+ cat >"${DRACUT_LDD}" <<EOL
+ #!/bin/bash
+-${topdir}/sbin/prelink-rtld --root='${sysroot}' \${1}
++@@TARGET_CROSS@@xldd --root='${sysroot}' \${1}
+ EOL
+ chmod +x "${DRACUT_LDD}"
+ export DRACUT_LDD
